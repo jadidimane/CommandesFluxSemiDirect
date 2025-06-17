@@ -32,10 +32,11 @@ public class LoginPage extends BasePage {
         Thread.sleep(200);
         find(siteI).sendKeys(site);
         Thread.sleep(500);
-        String id=find(By.xpath("//div[contains(@id, 'qvs')]")).getAttribute("id");
-        idqvs2=Integer.parseInt(id.split("_")[1]);
+        /*String id=find(By.xpath("//div[contains(@id, 'qvs')]")).getAttribute("id");*/
+        /*idqvs2=Integer.parseInt(id.split("_")[1]);*/
         Thread.sleep(500);
-        click(By.id("qvs_"+idqvs2));
+        /*click(By.id("qvs_"+idqvs2));*/
+        click(By.id("qvs_2"));
     }
     public MenuPage loginIntoGCO(String username, String password, String site) throws InterruptedException {
         setUsernameField(username);
