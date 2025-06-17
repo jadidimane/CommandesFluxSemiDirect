@@ -16,7 +16,7 @@ public class OrderCreationPage extends BasePage{
     private By ordergenre = By.xpath("//div[@id='orderMode']/input");
     private By supplierField=By.xpath("//input[@aria-label='Fournisseur']");
     private By selectMode=By.xpath("//div[@id='orderCreationMode']");
-    private By addArticle=By.xpath("//*[@id=\"articleGrid-srgridtoolbar-add-button\"]/span[2]/i");
+    private By addArticle=By.xpath("//*[@id='articleGrid-srgridtoolbar-add-button']");
     private By articlesPanel=By.xpath("//div[text()='Périmètre articles']");
     private By articleInput=By.xpath("//*[@id=\"articleGrid\"]/div/div[2]/div[2]/div[3]/div[2]/div/div/div[1]");
     private By siteInput=By.xpath("//*[@id=\"siteScopeGrid\"]/div/div[2]/div[2]/div[3]/div[2]/div/div/div");
@@ -39,10 +39,10 @@ public class OrderCreationPage extends BasePage{
         scrollToElement(articlesPanel);
         click(selectMode);
         type(By.xpath("//input[@aria-label='Mode de sélection']"),selectionMode);
-        Thread.sleep(500);
+        Thread.sleep(600);
         String id=find(By.xpath("//div[contains(@id, 'qvs')]")).getAttribute("id");
         idqvs2=Integer.parseInt(id.split("_")[1]);
-        Thread.sleep(500);
+        Thread.sleep(600);
         click(By.id("qvs_"+idqvs2));
     }
     public void setAddArticle() throws InterruptedException {
@@ -75,7 +75,7 @@ public class OrderCreationPage extends BasePage{
 
                 By champArticle = By.xpath("//div[@comp-id='" + (suite + 7) + "']");
                 /*click(champArticle);*/
-                Thread.sleep(800);
+                Thread.sleep(1000);
                 find(champArticle).sendKeys(article);
 //                Thread.sleep(2500);
                 find(champArticle).sendKeys(Keys.TAB);
@@ -113,13 +113,13 @@ public class OrderCreationPage extends BasePage{
             Thread.sleep(500);
             find(champNomSite).sendKeys(clientsite);
             idqvs1=Integer.parseInt(find(By.xpath("//div[contains(@id, 'qvs')]")).getAttribute("id").split("_")[1]);
-            Thread.sleep(800);
+            Thread.sleep(900);
             click(By.id("qvs_"+idqvs1));
-            Thread.sleep(800);
+            Thread.sleep(900);
             find(champScope).sendKeys("H0");
             String id=find(By.xpath("//div[contains(@id, 'qvs')]")).getAttribute("id");
             idqvs2=Integer.parseInt(id.split("_")[1]);
-            Thread.sleep(800);
+            Thread.sleep(900);
             find(By.id("qvs_"+idqvs2)).click();
             click(By.xpath("//div[@comp-id='" + (suite + 9) + "']"));
             By sitePoids = By.xpath("(//div[@class='ag-center-cols-container'])[4]/div["+(i+1)+"]/div[3]//input");
