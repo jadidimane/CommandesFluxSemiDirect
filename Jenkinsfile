@@ -13,29 +13,42 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-            git branch: 'master',
-                url: 'https://github.com/jadidimane/CommandesFluxSemiDirect.git'
+                git branch: 'master',
+                    url: 'https://github.com/jadidimane/CommandesFluxSemiDirect.git'
             }
         }
+
         stage('Build') {
-                    steps {
-                        bat 'mvn clean install'
-                    }
-                }
+            steps {
+                bat 'mvn clean install'
+            }
+        }
+
         stage('Test') {
             steps {
                 bat 'mvn test'
             }
         }
+
         stage('Download PDF') {
-                    steps {
-                        sh 'mkdir -p target/pdf-report
-                        sh 'mv target/generated-report/rapport.pdf target/pdf-report/'
-                    }
-                }
+            steps {
+
+                bat '''
+                    if not exist target\\pdf-report mkdir target\\pdf-report
+                    move /Y target\\generated-report\\rapport.pdf target\\pdf-report\\
+                '''
+
+
+            }
+        }
+
         stage('Allure Report') {
             steps {
-                allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
+                allure([
+                    includeProperties: false,
+                    jdk: '',
+                    results: [[path: 'target/allure-results']]
+                ])
             }
         }
 
@@ -45,12 +58,14 @@ pipeline {
             }
         }
     }
+
     post {
         always {
             echo "Pipeline finished. You can check the test results above."
         }
+
         failure {
-            echo "something"
+            echo "Pipeline failed — please review the logs."
         }
     }
 }
