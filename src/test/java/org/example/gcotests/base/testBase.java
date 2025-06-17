@@ -24,9 +24,9 @@ public class testBase {
     @Before
     public void setUp() throws InterruptedException {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-        options.addArguments("window-size=1920,1080");
-        WebDriver driver = new ChromeDriver(options);
+        /*options.addArguments("--headless");
+        options.addArguments("window-size=1920,1080");*/
+        WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get(url);
         basePage=new BasePage();

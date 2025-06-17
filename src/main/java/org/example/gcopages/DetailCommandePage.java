@@ -20,21 +20,19 @@ public class DetailCommandePage extends BasePage {
         int i=1;
         System.out.println(map());
         for(List<String> quantity: map().values()){
-            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();",find2(By.xpath("//div[@name='left']/div["+i+"]/div[4]/span/span[2]")));
+            WebElement element1 = find2(By.xpath("//div[@name='left']/div["+i+"]/div[4]/span/span[2]"));
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();",element1);
             int compid=Integer.parseInt(find(quantityInput).getAttribute("comp-id"));
             for(int q=0; q<quantity.size(); q++){
                 if(!quantity.get(q).equals("0,000")){
+
                     find(By.xpath("//div[@comp-id='" + (compid+q) + "']/div[3]")).sendKeys(Keys.DELETE);
                     find(By.xpath("//div[@comp-id='" + (compid+q) + "']/div[3]//input")).sendKeys(quantity.get(q)+ Keys.ENTER);
                 }}
-            System.out.println("trying to find  the element");
-            WebElement element = find2(By.xpath("//div[@name='left']/div["+i+"]/div[4]/span/span[2]"));
-            System.out.println("element found");
+            WebElement element = find2(By.xpath("//div[@name='left']/div[" + i + "]/div[4]/span/span[1]/span"));
             ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
             Thread.sleep(500);
-            System.out.println("Target xpath: //div[@name='left']/div["+i+"]/div[4]/span/span[2]");
             ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", element);
-            System.out.println("Clicking on element at row: " + i + " with quantities: " + quantity);
 
                 i++;
         }
