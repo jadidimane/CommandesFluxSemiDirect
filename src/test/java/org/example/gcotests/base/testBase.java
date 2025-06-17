@@ -8,7 +8,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -21,7 +23,10 @@ public class testBase {
     private String url="http://192.168.0.116:9080/gco/";
     @Before
     public void setUp() throws InterruptedException {
-        driver = new EdgeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        options.addArguments("--disable-gpu");
+        WebDriver driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.get(url);
         basePage=new BasePage();
