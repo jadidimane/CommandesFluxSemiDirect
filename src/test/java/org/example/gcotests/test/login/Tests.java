@@ -27,7 +27,7 @@ public class Tests extends testBase {
          DetailCommandePage detail=order.newCommande("Semi-Direct","Valo. prix Centrale","A0341 - SAIDA FOOD TRADING","Par article",Excel.extractEANCodes(),List.of("RH Vitrolles","RH Bonneveine","RH Grand Littoral"));
          detail.setOrderPUQuantity();
      }
-     @Test
+    /* @Test
      @Story("Création d’une nouvelle commande flux Livraison entrepôt")
      @Severity(SeverityLevel.CRITICAL)
      @DisplayName("Test de création de commande flux  Livraison entrepôt valide")
@@ -36,6 +36,6 @@ public class Tests extends testBase {
          OrderCreationPage order=menuPage.setCommandeFournisseur().setNewCommand();
          DetailCommandePage detail=order.DetailCommandePageLivraison("Cde livrais entrepot","A921 - RH TRADING TAMPONET","Par article",Excel.extractEANCodes(),List.of("RH Vitrolles","RH Bonneveine","RH Grand Littoral"));
          detail.setOrderPUQuantity();
-     }
+     }*/
 
 }

@@ -30,7 +30,7 @@ public class LoginPage extends BasePage {
         int idqvs2=0;
         click(By.cssSelector(".desktop"));
         Thread.sleep(200);
-        type(siteI,site);
+        find(siteI).sendKeys(site);
         Thread.sleep(500);
         String id=find(By.xpath("//div[contains(@id, 'qvs')]")).getAttribute("id");
         idqvs2=Integer.parseInt(id.split("_")[1]);
