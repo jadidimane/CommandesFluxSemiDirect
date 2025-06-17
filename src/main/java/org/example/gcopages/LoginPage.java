@@ -29,6 +29,7 @@ public class LoginPage extends BasePage {
     public void setSite(String site) throws InterruptedException {
         int idqvs2=0;
         click(By.cssSelector(".desktop"));
+        Thread.sleep(200);
         type(siteI,site);
         Thread.sleep(500);
         String id=find(By.xpath("//div[contains(@id, 'qvs')]")).getAttribute("id");
