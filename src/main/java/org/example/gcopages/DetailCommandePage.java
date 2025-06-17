@@ -27,7 +27,13 @@ public class DetailCommandePage extends BasePage {
                     find(By.xpath("//div[@comp-id='" + (compid+q) + "']/div[3]")).sendKeys(Keys.DELETE);
                     find(By.xpath("//div[@comp-id='" + (compid+q) + "']/div[3]//input")).sendKeys(quantity.get(q)+ Keys.ENTER);
                 }}
-                ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();",find2(By.xpath("//div[@name='left']/div["+i+"]/div[4]/span/span[1]")));
+            WebElement element = find2(By.xpath("//div[@name='left']/div["+i+"]/div[4]/span/span[2]"));
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+            Thread.sleep(500);
+            System.out.println("Target xpath: //div[@name='left']/div["+i+"]/div[4]/span/span[2]");
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", element);
+            System.out.println("Clicking on element at row: " + i + " with quantities: " + quantity);
+
                 i++;
         }
        Thread.sleep(500);
