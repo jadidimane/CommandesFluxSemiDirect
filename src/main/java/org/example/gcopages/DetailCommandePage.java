@@ -27,7 +27,9 @@ public class DetailCommandePage extends BasePage {
                     find(By.xpath("//div[@comp-id='" + (compid+q) + "']/div[3]")).sendKeys(Keys.DELETE);
                     find(By.xpath("//div[@comp-id='" + (compid+q) + "']/div[3]//input")).sendKeys(quantity.get(q)+ Keys.ENTER);
                 }}
+            System.out.println("trying to find  the element");
             WebElement element = find2(By.xpath("//div[@name='left']/div["+i+"]/div[4]/span/span[2]"));
+            System.out.println("element found");
             ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
             Thread.sleep(500);
             System.out.println("Target xpath: //div[@name='left']/div["+i+"]/div[4]/span/span[2]");
