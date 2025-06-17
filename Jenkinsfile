@@ -30,7 +30,7 @@ pipeline {
             }
         }
 
-        stage('Download PDF') {
+        /* stage('Download PDF') {
             steps {
 
                 bat '''
@@ -40,7 +40,7 @@ pipeline {
 
 
             }
-        }
+        } */
 
         stage('Allure Report') {
             steps {
