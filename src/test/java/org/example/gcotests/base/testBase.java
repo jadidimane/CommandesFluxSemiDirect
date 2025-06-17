@@ -23,7 +23,10 @@ public class testBase {
     private String url="http://192.168.0.116:9080/gco/";
     @Before
     public void setUp() throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        options.addArguments("window-size=1920,1080");
+        WebDriver driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.get(url);
         basePage=new BasePage();
